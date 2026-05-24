@@ -3,34 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wonders of the Natural World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Scenic Wonders of Southern Vietnam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:    #1a1208;
-      --cream:  #f5efe3;
-      --amber:  #c8751a;
-      --sage:   #4a6741;
-      --mist:   #dde6d5;
-      --shadow: rgba(26,18,8,0.12);
+      --xanh-dam:   #0d3b2e;
+      --xanh-la:    #1e6b4a;
+      --vang-lua:   #d4882a;
+      --vang-nhat:  #f5e6c8;
+      --trang-kem:  #fdf8ef;
+      --bong:       rgba(13,59,46,0.13);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      line-height: 1.7;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--trang-kem);
+      color: var(--xanh-dam);
+      line-height: 1.75;
     }
 
-    /* ── HEADER ── */
+    /* HEADER */
     header {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 3rem 2rem 2.5rem;
+      background: var(--xanh-dam);
+      color: var(--vang-nhat);
+      padding: 3.5rem 2rem 3rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -39,130 +39,170 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 60% 0%, #3d2a0a 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse at 20% 100%, #1e6b4a55 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 0%,   #d4882a22 0%, transparent 55%);
       pointer-events: none;
     }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 48px;
+      background: var(--trang-kem);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: .02em;
       position: relative;
     }
-    header h1 span { color: var(--amber); font-style: italic; }
-    header p.tagline {
-      margin-top: .75rem;
-      font-size: 1rem;
+    header h1 em {
+      color: var(--vang-lua);
+      font-style: italic;
+    }
+    header .sub {
+      margin-top: .6rem;
+      font-size: .88rem;
       font-weight: 300;
-      opacity: .75;
-      letter-spacing: .08em;
+      letter-spacing: .12em;
       text-transform: uppercase;
+      opacity: .7;
       position: relative;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      background: var(--sage);
+      background: var(--xanh-la);
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      padding: .85rem 1rem;
       flex-wrap: wrap;
+      gap: 0;
     }
     nav a {
-      color: var(--mist);
+      color: #c8ead8;
       text-decoration: none;
-      font-size: .9rem;
+      font-size: .85rem;
       font-weight: 500;
-      letter-spacing: .06em;
+      letter-spacing: .07em;
       text-transform: uppercase;
-      transition: color .2s;
+      padding: .9rem 1.6rem;
+      transition: background .2s, color .2s;
     }
-    nav a:hover { color: #fff; }
+    nav a:hover { background: #164f36; color: #fff; }
 
-    /* ── MAIN ── */
+    /* MAIN */
     main {
-      max-width: 1000px;
+      max-width: 1020px;
       margin: 0 auto;
       padding: 3rem 1.5rem 4rem;
     }
 
-    /* ── INTRO ── */
+    /* INTRO */
     .intro {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 2.5rem;
       align-items: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4rem;
+      animation: fadeUp .7s ease both;
     }
     @media (max-width: 640px) { .intro { grid-template-columns: 1fr; } }
+
     .intro-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
-      font-weight: 700;
-      margin-bottom: .75rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
       line-height: 1.25;
+      margin-bottom: .9rem;
     }
-    .intro-text p { font-weight: 300; color: #3a3020; }
-    .intro img {
+    .intro-text h2 span { color: var(--xanh-la); }
+    .intro-text p { font-weight: 300; color: #2e4a3a; font-size: .97rem; }
+
+    .intro-img-wrap { position: relative; }
+    .intro-img-wrap img {
       width: 100%;
-      height: 280px;
+      height: 290px;
       object-fit: cover;
-      border-radius: 4px;
-      box-shadow: 6px 6px 0 var(--amber);
+      border-radius: 2px;
+      display: block;
+      box-shadow: 8px 8px 0 var(--vang-lua);
+    }
+    .intro-img-wrap .label {
+      position: absolute;
+      bottom: -14px; left: 16px;
+      background: var(--xanh-dam);
+      color: var(--vang-nhat);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem .8rem;
     }
 
-    /* ── SECTION TITLE ── */
+    /* SECTION TITLE */
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--sage);
-      border-left: 4px solid var(--amber);
-      padding-left: .85rem;
-      margin-bottom: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--xanh-la);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.6rem;
+    }
+    .section-title::before {
+      content: '';
+      display: block;
+      width: 36px; height: 3px;
+      background: var(--vang-lua);
+      flex-shrink: 0;
     }
 
-    /* ── WONDERS LIST ── */
-    section.wonders { margin-bottom: 3.5rem; }
-    ol.wonder-list {
+    /* LIST */
+    section.landmarks { margin-bottom: 4rem; animation: fadeUp .7s .1s ease both; }
+    ol.landmark-list {
       list-style: none;
-      counter-reset: wonder;
+      counter-reset: dd;
       display: grid;
-      gap: .85rem;
-    }
-    ol.wonder-list li {
-      counter-increment: wonder;
-      display: flex;
-      align-items: flex-start;
       gap: 1rem;
+    }
+    ol.landmark-list li {
+      counter-increment: dd;
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
       background: #fff;
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      box-shadow: 0 2px 8px var(--shadow);
-      transition: transform .15s, box-shadow .15s;
+      border-radius: 4px;
+      padding: 1rem 1.3rem;
+      box-shadow: 0 2px 10px var(--bong);
+      border-left: 3px solid transparent;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
     }
-    ol.wonder-list li:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px var(--shadow);
+    ol.landmark-list li:hover {
+      border-left-color: var(--vang-lua);
+      transform: translateX(4px);
+      box-shadow: 0 6px 20px var(--bong);
     }
-    ol.wonder-list li::before {
-      content: counter(wonder, decimal-leading-zero);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--amber);
+    ol.landmark-list li::before {
+      content: counter(dd, decimal-leading-zero);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--vang-lua);
       min-width: 2rem;
       line-height: 1;
       margin-top: .1rem;
     }
-    ol.wonder-list li .item-text strong {
+    ol.landmark-list li .info strong {
       display: block;
       font-weight: 500;
       margin-bottom: .2rem;
     }
-    ol.wonder-list li .item-text span { font-size: .9rem; color: #5a4e3a; font-weight: 300; }
+    ol.landmark-list li .info span { font-size: .88rem; color: #4a6455; font-weight: 300; }
 
-    /* ── GALLERY ── */
-    section.gallery { margin-bottom: 3.5rem; }
+    /* GALLERY */
+    section.gallery { margin-bottom: 4rem; animation: fadeUp .7s .2s ease both; }
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -171,187 +211,191 @@
     @media (max-width: 560px) { .photo-grid { grid-template-columns: 1fr; } }
     .photo-grid figure {
       overflow: hidden;
-      border-radius: 4px;
-      box-shadow: 0 3px 10px var(--shadow);
+      border-radius: 3px;
+      box-shadow: 0 3px 12px var(--bong);
+      cursor: pointer;
     }
     .photo-grid figure img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       display: block;
-      transition: transform .4s ease;
+      transition: transform .45s ease;
     }
-    .photo-grid figure:hover img { transform: scale(1.05); }
+    .photo-grid figure:hover img { transform: scale(1.07); }
     .photo-grid figure figcaption {
-      background: var(--ink);
-      color: var(--mist);
-      font-size: .78rem;
-      padding: .45rem .7rem;
+      background: var(--xanh-dam);
+      color: var(--vang-nhat);
+      font-size: .76rem;
+      padding: .5rem .75rem;
       text-align: center;
-      letter-spacing: .04em;
+      letter-spacing: .05em;
     }
 
-    /* ── LEARN MORE ── */
-    section.resources { margin-bottom: 1rem; }
-    .link-card {
+    /* RESOURCES */
+    section.resources { animation: fadeUp .7s .3s ease both; }
+    .link-btn {
       display: inline-flex;
       align-items: center;
       gap: .6rem;
-      background: var(--sage);
+      margin-top: .75rem;
+      background: var(--xanh-la);
       color: #fff;
       text-decoration: none;
-      padding: .75rem 1.4rem;
-      border-radius: 4px;
+      padding: .8rem 1.6rem;
+      border-radius: 3px;
+      font-size: .92rem;
       font-weight: 500;
-      font-size: .95rem;
+      letter-spacing: .04em;
       transition: background .2s, transform .15s;
-      margin-top: .5rem;
     }
-    .link-card:hover { background: #3a5333; transform: translateY(-1px); }
-    .link-card svg { flex-shrink: 0; }
+    .link-btn:hover { background: var(--xanh-dam); transform: translateY(-2px); }
 
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      background: var(--ink);
-      color: #8a7a60;
+      background: var(--xanh-dam);
+      color: #6a9b7e;
       text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: .85rem;
+      padding: 1.6rem 1rem;
+      font-size: .83rem;
     }
-    footer a { color: var(--amber); text-decoration: none; }
+    footer a { color: var(--vang-lua); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Wonders of the <span>Natural World</span></h1>
-    <p class="tagline">Earth's most breathtaking landscapes &amp; ecosystems</p>
+    <h1>Scenic Wonders of <em>Southern Vietnam</em></h1>
+    <p class="sub">Discover the beauty of the Mekong River Delta &amp; beyond</p>
   </header>
 
   <nav>
-    <a href="#wonders">Top Wonders</a>
+    <a href="#landmarks">Landmarks</a>
     <a href="#gallery">Gallery</a>
     <a href="#resources">Learn More</a>
   </nav>
 
   <main>
 
-    <!-- Semantic: <article> for intro content -->
     <article class="intro">
       <div class="intro-text">
-        <h2>Our Planet Is Full of Extraordinary Places</h2>
+        <h2>A Land of <span>Rivers, Forests</span> &amp; Timeless Culture</h2>
         <p>
-          From ancient rainforests to coral kingdoms beneath the sea, Earth holds wonders
-          that have shaped civilisations, inspired artists, and humbled explorers for
-          millennia. This page celebrates seven of the most awe-inspiring natural sites
-          on the planet.
+          Southern Vietnam — a fertile land of golden paddy fields stretching from the
+          mangrove forests of Can Gio to the vast Mekong Delta. This region captivates
+          with its untouched natural scenery, vibrant floating markets, lush fruit
+          orchards, and a way of life intimately tied to the rhythm of the river.
         </p>
       </div>
-      <img
-        src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80"
-        alt="Sunlight breaking through a forest canopy"
-      />
+      <div class="intro-img-wrap">
+        <img
+          src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80"
+          alt="Aerial view of the Mekong River Delta, Southern Vietnam"
+        />
+        <span class="label">Mekong River Delta</span>
+      </div>
     </article>
 
-    <!-- Semantic: <section> for wonders list -->
-    <section class="wonders" id="wonders">
-      <h2 class="section-title">Seven Natural Wonders</h2>
-      <ol class="wonder-list">
+    <section class="landmarks" id="landmarks">
+      <h2 class="section-title">Top Scenic Destinations</h2>
+      <ol class="landmark-list">
         <li>
-          <div class="item-text">
-            <strong>Amazon Rainforest — South America</strong>
-            <span>Home to roughly 10% of all species on Earth, covering 5.5 million km².</span>
+          <div class="info">
+            <strong>Cai Rang Floating Market — Can Tho</strong>
+            <span>A bustling river market that comes alive at dawn, where boats loaded with tropical fruits and fresh produce trade along the waterway.</span>
           </div>
         </li>
         <li>
-          <div class="item-text">
-            <strong>Great Barrier Reef — Australia</strong>
-            <span>The world's largest coral reef system, stretching over 2,300 km.</span>
+          <div class="info">
+            <strong>Tra Su Cajuput Forest — An Giang</strong>
+            <span>A flooded cajuput forest blanketed in vivid green duckweed, home to thousands of migratory birds and rare wildlife.</span>
           </div>
         </li>
         <li>
-          <div class="item-text">
-            <strong>Grand Canyon — United States</strong>
-            <span>A mile-deep gorge carved by the Colorado River over 5–6 million years.</span>
+          <div class="info">
+            <strong>Can Gio Biosphere Reserve — Ho Chi Minh City</strong>
+            <span>The largest mangrove forest in Southeast Asia, recognized by UNESCO as a biosphere reserve and the green lung of the city.</span>
           </div>
         </li>
         <li>
-          <div class="item-text">
-            <strong>Victoria Falls — Zambia / Zimbabwe</strong>
-            <span>The world's largest waterfall curtain at 1,708 m wide and 108 m tall.</span>
+          <div class="info">
+            <strong>Phu Quoc Island — Kien Giang</strong>
+            <span>A tropical paradise of white-sand beaches, crystal-clear waters, and world-class resorts nestled in the Gulf of Thailand.</span>
           </div>
         </li>
         <li>
-          <div class="item-text">
-            <strong>Mount Everest — Nepal / Tibet</strong>
-            <span>Earth's highest peak at 8,849 m above sea level.</span>
+          <div class="info">
+            <strong>Tram Chim National Park — Dong Thap</strong>
+            <span>A vital wetland sanctuary sheltering the rare red-headed crane and hundreds of waterbird species amid vast lotus fields.</span>
           </div>
         </li>
         <li>
-          <div class="item-text">
-            <strong>Northern Lights — Arctic Circle</strong>
-            <span>Plasma streams from the sun collide with Earth's atmosphere, creating vivid curtains of light.</span>
+          <div class="info">
+            <strong>Ba Den Mountain — Tay Ninh</strong>
+            <span>The highest peak in Southern Vietnam, draped in ancient forest and accessible by modern cable car, revered as a sacred spiritual site.</span>
           </div>
         </li>
         <li>
-          <div class="item-text">
-            <strong>Sahara Desert — North Africa</strong>
-            <span>The world's largest hot desert at 9.2 million km², larger than the contiguous USA.</span>
+          <div class="info">
+            <strong>Rice Paper Village — Binh Duong</strong>
+            <span>A living craft village where circular rice paper sheets are hand-made and sun-dried in golden rows, preserving a centuries-old tradition.</span>
           </div>
         </li>
       </ol>
     </section>
 
-    <!-- Semantic: <section> for gallery -->
     <section class="gallery" id="gallery">
       <h2 class="section-title">Photo Gallery</h2>
       <div class="photo-grid">
         <figure>
           <img
-            src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=80"
-            alt="Grand Canyon at sunset"
+            src="https://images.unsplash.com/photo-1540611025311-01df3cef54b5?w=600&q=80"
+            alt="Floating market on the Mekong River at sunrise"
           />
-          <figcaption>Grand Canyon, USA</figcaption>
+          <figcaption>Mekong Floating Market</figcaption>
         </figure>
         <figure>
           <img
-            src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&q=80"
-            alt="Northern Lights over snowy landscape"
+            src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&q=80"
+            alt="Clear turquoise waters of Phu Quoc Island beach"
           />
-          <figcaption>Aurora Borealis, Arctic</figcaption>
+          <figcaption>Phu Quoc Island Beach</figcaption>
         </figure>
         <figure>
           <img
-            src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=600&q=80"
-            alt="Aerial view of Amazon rainforest"
+            src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80"
+            alt="Lush green mangrove forest along a river channel"
           />
-          <figcaption>Amazon Rainforest, Brazil</figcaption>
+          <figcaption>Can Gio Mangrove Forest</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- External link section -->
     <section class="resources" id="resources">
       <h2 class="section-title">Learn More</h2>
-      <p>Dive deeper into Earth's natural heritage with these trusted sources:</p>
-      <br />
+      <p>Explore travel guides and cultural insights about Southern Vietnam:</p>
       <a
-        class="link-card"
-        href="https://www.nationalgeographic.com/environment/article/natural-world"
+        class="link-btn"
+        href="https://vietnam.travel/places-to-go/southern-vietnam"
         target="_blank"
         rel="noopener noreferrer"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
         </svg>
-        Explore on National Geographic
+        Visit Vietnam Tourism Official Site
       </a>
     </section>
 
   </main>
 
   <footer>
-    <p>Created for Web Design &bull; Images via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+    <p>A guide to the scenic beauty of Southern Vietnam &bull; Photos via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
   </footer>
 
 </body>
