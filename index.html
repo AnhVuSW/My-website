@@ -201,6 +201,48 @@
     }
     ol.landmark-list li .info span { font-size: .88rem; color: #4a6455; font-weight: 300; }
 
+    /* ── PREVIEW BOX ── */
+    #image {
+      width: 100%;
+      height: 320px;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      background-color: var(--xanh-dam);
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--vang-nhat);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      letter-spacing: .04em;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 4px 24px var(--bong);
+      transition: background-image .3s ease, color .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Dark overlay so text stays readable when an image is shown */
+    #image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13,59,46,0.38);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    #image.has-image::before { opacity: 1; }
+    #image span {
+      position: relative; /* sit above the ::before overlay */
+      z-index: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,.6);
+    }
+
     /* GALLERY */
     section.gallery { margin-bottom: 4rem; animation: fadeUp .7s .2s ease both; }
     .photo-grid {
@@ -265,6 +307,81 @@
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+    /* ── LANDMARK DETAIL PAGES ── */
+    .detail-section { margin-bottom: 4rem; animation: fadeUp .7s .15s ease both; }
+
+    .num-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .num-btn {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--xanh-la);
+      background: transparent;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--xanh-la);
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .num-btn:hover { background: var(--xanh-la); color: #fff; }
+    .num-btn.active { background: var(--xanh-dam); color: var(--vang-lua); border-color: var(--xanh-dam); }
+
+    .detail-page { display: none; animation: fadeUp .35s ease; }
+    .detail-page.active { display: block; }
+
+    .detail-card {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px var(--bong);
+      overflow: hidden;
+    }
+    .detail-card img {
+      width: 100%; height: 280px;
+      object-fit: cover; display: block;
+    }
+    .detail-body { padding: 1.5rem 1.75rem 1.75rem; }
+    .detail-num {
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--vang-lua); margin-bottom: .4rem;
+    }
+    .detail-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--xanh-dam); line-height: 1.2;
+      margin-bottom: .3rem;
+    }
+    .detail-loc {
+      font-size: .85rem; color: var(--xanh-la);
+      font-weight: 500; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .detail-loc svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .detail-desc {
+      font-size: .96rem; font-weight: 300;
+      color: #2e4a3a; line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .detail-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+    .detail-tag {
+      font-size: .75rem; padding: .28rem .75rem;
+      background: #e1f5ee; color: #085041;
+      border: 1px solid #9fe1cb; border-radius: 20px;
+    }
+    .detail-tip {
+      border-left: 3px solid var(--vang-lua);
+      padding: .65rem .9rem;
+      background: var(--vang-nhat);
+      font-size: .87rem; color: #4a3a1a; line-height: 1.65;
+    }
+    .detail-tip strong { color: var(--vang-lua); }
   </style>
 </head>
 <body>
@@ -276,6 +393,7 @@
 
   <nav>
     <a href="#landmarks">Landmarks</a>
+    <a href="#destinations">Destinations</a>
     <a href="#gallery">Gallery</a>
     <a href="#resources">Learn More</a>
   </nav>
@@ -349,8 +467,138 @@
       </ol>
     </section>
 
+    <!-- ── LANDMARK DETAIL PAGES (số 1–5) ── -->
+    <section class="detail-section" id="destinations">
+      <h2 class="section-title">Khám Phá Chi Tiết</h2>
+
+      <div class="num-row" id="numRow">
+        <button class="num-btn active" data-i="0">1</button>
+        <button class="num-btn" data-i="1">2</button>
+        <button class="num-btn" data-i="2">3</button>
+        <button class="num-btn" data-i="3">4</button>
+        <button class="num-btn" data-i="4">5</button>
+      </div>
+
+      <!-- Page 1 -->
+      <div class="detail-page active" id="dp-0">
+        <div class="detail-card">
+          <img src="https://mia.vn/media/uploads/blog-du-lich/kham-pha-net-dac-sac-cua-cho-noi-cai-rang-chon-mien-tay-song-nuoc-12-1649149954.jpeg" alt="Chợ nổi Cái Răng, Cần Thơ" />
+          <div class="detail-body">
+            <p class="detail-num">Điểm đến 01</p>
+            <h3 class="detail-title">Chợ nổi Cái Răng</h3>
+            <p class="detail-loc">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.418-4.418-7-8.582-7-11a7 7 0 1114 0c0 2.418-2.582 6.582-7 11z"/><circle cx="12" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>
+              Cần Thơ
+            </p>
+            <p class="detail-desc">Chợ nổi Cái Răng là một trong những khu chợ sông sầm uất nhất đồng bằng sông Cửu Long, nhộn nhịp nhất từ tờ mờ sáng. Hàng trăm chiếc ghe chở đầy trái cây, rau củ tươi ngon tụ họp, trao đổi trên mặt nước — một nét văn hóa sông nước đặc trưng của miền Tây Nam Bộ.</p>
+            <div class="detail-tags">
+              <span class="detail-tag">Văn hóa sông nước</span>
+              <span class="detail-tag">Ẩm thực đặc sắc</span>
+              <span class="detail-tag">Chụp ảnh đẹp</span>
+            </div>
+            <div class="detail-tip"><strong>Mẹo du lịch:</strong> Xuất phát trước 6 giờ sáng để tham quan khi chợ còn đông nhất. Thuê thuyền nhỏ để len lỏi giữa các ghe hàng và mua trái cây tươi ngay trên sông.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 2 -->
+      <div class="detail-page" id="dp-1">
+        <div class="detail-card">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Rừng tràm Trà Sư, An Giang" />
+          <div class="detail-body">
+            <p class="detail-num">Điểm đến 02</p>
+            <h3 class="detail-title">Rừng tràm Trà Sư</h3>
+            <p class="detail-loc">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.418-4.418-7-8.582-7-11a7 7 0 1114 0c0 2.418-2.582 6.582-7 11z"/><circle cx="12" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>
+              An Giang
+            </p>
+            <p class="detail-desc">Rừng tràm Trà Sư là khu rừng ngập nước đặc biệt với thảm bèo tấm xanh mướt phủ kín mặt nước, tạo thành một tấm thảm xanh ngọc huyền ảo. Nơi đây là thiên đường của hàng nghìn loài chim di cư và động vật hoang dã quý hiếm của vùng đồng bằng sông Cửu Long.</p>
+            <div class="detail-tags">
+              <span class="detail-tag">Thiên nhiên hoang sơ</span>
+              <span class="detail-tag">Quan sát chim</span>
+              <span class="detail-tag">Chèo thuyền</span>
+            </div>
+            <div class="detail-tip"><strong>Mẹo du lịch:</strong> Ghé thăm vào mùa nước nổi (tháng 8–11) khi mực nước cao nhất và cảnh sắc đẹp nhất. Bình minh và hoàng hôn là thời điểm lý tưởng để ngắm chim về tổ.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 3 -->
+      <div class="detail-page" id="dp-2">
+        <div class="detail-card">
+          <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80" alt="Khu dự trữ sinh quyển Cần Giờ" />
+          <div class="detail-body">
+            <p class="detail-num">Điểm đến 03</p>
+            <h3 class="detail-title">Khu dự trữ sinh quyển Cần Giờ</h3>
+            <p class="detail-loc">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.418-4.418-7-8.582-7-11a7 7 0 1114 0c0 2.418-2.582 6.582-7 11z"/><circle cx="12" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>
+              TP. Hồ Chí Minh
+            </p>
+            <p class="detail-desc">Rừng ngập mặn Cần Giờ là lá phổi xanh khổng lồ của thành phố, được UNESCO công nhận là khu dự trữ sinh quyển thế giới. Hệ sinh thái rừng ngập mặn lớn nhất Đông Nam Á này là nơi trú ngụ của đàn khỉ đuôi dài, cá sấu và vô số loài thủy sinh phong phú.</p>
+            <div class="detail-tags">
+              <span class="detail-tag">UNESCO</span>
+              <span class="detail-tag">Rừng ngập mặn</span>
+              <span class="detail-tag">Du lịch sinh thái</span>
+            </div>
+            <div class="detail-tip"><strong>Mẹo du lịch:</strong> Chỉ cách trung tâm TP.HCM khoảng 50 km, dễ dàng đi về trong ngày. Đừng bỏ qua Đảo Khỉ — nơi có hơn 1.500 chú khỉ sinh sống tự nhiên.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 4 -->
+      <div class="detail-page" id="dp-3">
+        <div class="detail-card">
+          <img src="https://vcdn1-dulich.vnecdn.net/2022/04/08/dulichPhuQuoc-1649392573-9234-1649405369.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=SU6n3IvJxW1Sla0xqg31Kg" alt="Đảo Phú Quốc, Kiên Giang" />
+          <div class="detail-body">
+            <p class="detail-num">Điểm đến 04</p>
+            <h3 class="detail-title">Đảo Phú Quốc</h3>
+            <p class="detail-loc">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.418-4.418-7-8.582-7-11a7 7 0 1114 0c0 2.418-2.582 6.582-7 11z"/><circle cx="12" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>
+              Kiên Giang
+            </p>
+            <p class="detail-desc">Phú Quốc — "Đảo Ngọc" của Việt Nam — sở hữu những bãi biển cát trắng mịn, làn nước trong vắt như pha lê và hệ thống resort đẳng cấp quốc tế. Nằm trong vịnh Thái Lan, hòn đảo này còn nổi tiếng với nước mắm truyền thống và rừng nguyên sinh phong phú.</p>
+            <div class="detail-tags">
+              <span class="detail-tag">Bãi biển đẹp</span>
+              <span class="detail-tag">Resort cao cấp</span>
+              <span class="detail-tag">Lặn biển</span>
+            </div>
+            <div class="detail-tip"><strong>Mẹo du lịch:</strong> Mùa khô từ tháng 11 đến tháng 4 là thời điểm đẹp nhất để thăm đảo. Ghé Dinh Cậu xem hoàng hôn và thưởng thức hải sản tươi sống tại chợ đêm.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 5 -->
+      <div class="detail-page" id="dp-4">
+        <div class="detail-card">
+          <img src="https://dulich.tayninh.gov.vn/uploads/images/%C4%90%E1%BB%8Ba%20%C4%91i%E1%BB%83m//nui-ba-den-tay-ninh.jpg" alt="Núi Bà Đen, Tây Ninh" />
+          <div class="detail-body">
+            <p class="detail-num">Điểm đến 05</p>
+            <h3 class="detail-title">Núi Bà Đen</h3>
+            <p class="detail-loc">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.418-4.418-7-8.582-7-11a7 7 0 1114 0c0 2.418-2.582 6.582-7 11z"/><circle cx="12" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>
+              Tây Ninh
+            </p>
+            <p class="detail-desc">Núi Bà Đen là đỉnh núi cao nhất miền Nam Việt Nam với độ cao gần 1.000 m, phủ kín rừng nguyên sinh cổ thụ và được coi là ngọn núi linh thiêng bậc nhất vùng. Cáp treo hiện đại đưa du khách chinh phục đỉnh núi để ngắm toàn cảnh đồng bằng trải dài bất tận.</p>
+            <div class="detail-tags">
+              <span class="detail-tag">Tâm linh</span>
+              <span class="detail-tag">Cáp treo</span>
+              <span class="detail-tag">Đỉnh cao nhất miền Nam</span>
+            </div>
+            <div class="detail-tip"><strong>Mẹo du lịch:</strong> Đến vào mùa lễ hội (tháng Giêng âm lịch) để hòa mình vào không khí hành hương độc đáo. Buổi sáng sớm mây thường phủ quanh núi tạo khung cảnh huyền ảo.</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
     <section class="gallery" id="gallery">
       <h2 class="section-title">Photo Gallery</h2>
+
+      <!-- ── PREVIEW BOX (id="image") ── -->
+      <div id="image">
+        <span>Hover over an image below to display here.</span>
+      </div>
+
       <div class="photo-grid">
         <figure>
           <img
@@ -397,6 +645,67 @@
   <footer>
     <p>A guide to the scenic beauty of Southern Vietnam &bull; Photos via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT  –  upDate & undo functions
+  ════════════════════════════════════════════════ -->
+  <script>
+    // ── Step 1: Grab references to the preview box and all gallery images ──
+    const previewBox = document.getElementById('image');
+    const galleryImgs = document.querySelectorAll('.photo-grid figure img');
+
+    // ── upDate: called on mouseenter of a gallery image ──
+    function upDate(previewPic) {
+      // 1. Confirm the event is firing
+      console.log('upDate triggered');
+
+      // 2. Inspect the hovered image's alt text and src
+      console.log('alt:', previewPic.alt);
+      console.log('src:', previewPic.src);
+
+      // 3. Update the text inside #image
+      previewBox.querySelector('span').textContent = previewPic.alt;
+
+      // 4. Update the background image of #image
+      previewBox.style.backgroundImage = `url('${previewPic.src}')`;
+
+      // 5. Add a helper class that activates the dark overlay (see CSS ::before)
+      previewBox.classList.add('has-image');
+    }
+
+    // ── undo: called on mouseleave of a gallery image ──
+    function undo() {
+      // Reset background image to empty
+      previewBox.style.backgroundImage = "url('')";
+
+      // Reset text back to the original placeholder
+      previewBox.querySelector('span').textContent =
+        'Hover over an image below to display here.';
+
+      // Remove the overlay helper class
+      previewBox.classList.remove('has-image');
+    }
+
+    // ── Attach event listeners to every gallery image ──
+    galleryImgs.forEach(function(img) {
+      img.addEventListener('mouseenter', function() {
+        upDate(img);          // pass the hovered <img> element
+      });
+      img.addEventListener('mouseleave', undo);
+    });
+    // ── Number buttons 1–5: switch detail pages ──
+    const numBtns = document.querySelectorAll('.num-btn');
+    const detailPages = document.querySelectorAll('.detail-page');
+    numBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const i = +btn.dataset.i;
+        numBtns.forEach(function(b) { b.classList.remove('active'); });
+        detailPages.forEach(function(p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        detailPages[i].classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
